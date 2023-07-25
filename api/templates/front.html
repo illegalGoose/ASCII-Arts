@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>/ascii/</title>
+</head>
+
+<style type="text/css">
+    body{
+        font-family: sans-serif;
+        width: 800px;
+        margin: 0 auto;
+        padding: 10px;
+    }
+
+    .error{
+        color: rgb(194, 7, 91);
+    }
+
+    form{
+        display: grid;
+        justify-content: center;
+    }
+
+    label{
+        display: block;
+        font-size: 20px;
+    }
+
+    input[type=text]{
+        width: 400px;
+        font-size: 20px;
+        padding: 2px;
+    }
+
+    textarea{
+        width: 400px;
+        height: 200px;
+        font-size: 17px;
+        font-family: monospace;
+    }
+
+    input[type=submit]{
+        background-color: rgb(24, 24, 24);
+        color: white;
+        font-size: 24px;
+        border-radius: 5px;
+        margin: auto;
+        width: 150px;
+    }
+
+    hr{
+        margin: 24px auto;
+    }
+
+    .art + .art{
+        margin-top: 20px;
+    }
+
+    .art-title{
+        display: grid;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    .art-body{
+        display: grid;
+        justify-content: center;
+        margin: 0;
+        font-size: 17px;
+    }
+
+    h1{
+        display: flex;
+        justify-content: center;
+    }
+
+    .input_titles{
+        display: flex;
+        justify-content: center;
+        font-weight: bold;
+        font-family: monospace;
+    }
+
+</style>
+
+<body>
+    <h1>Ascii Arts</h1>
+
+    <form method="post">
+        <label>
+            <div class="input_titles">Title</div>
+            <input type="text" name="title" value="{{ title }}">
+        </label>
+        <label>
+            <div class="input_titles">Art</div>
+            <textarea name="art">{{ art }}</textarea>
+        </label>
+        <div class="form">{{ error }}</div>
+        <input type="submit" value="Submit">
+    </form>
+
+    <hr>
+    {% for art in arts %}
+        <div class="art">
+            <div class="art-title">{{ art.title }}</div>
+            <pre class="art-body">{{ art.art }}</pre>
+        </div>
+    {% endfor %}
+</body>
+</html>
